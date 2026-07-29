@@ -13,7 +13,6 @@ void main() async {
   var box = await Hive.openBox('favBox');
   // await box.clear();
   
-
   runApp(const MyApp());
 }
 

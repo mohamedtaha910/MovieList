@@ -52,7 +52,7 @@ class _MovieDetailsState extends State<MovieDetails> {
             return SafeArea(
               top: false,
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                // physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
 
                 child: Column(
