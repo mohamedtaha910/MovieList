@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/components/movie_item.dart';
@@ -17,69 +19,7 @@ class HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   toolbarHeight: 60,
-      //   // automaticallyImplyLeading: false,
-      //   backgroundColor: kPrimaryColor,
-      //   surfaceTintColor: Colors.transparent,
-      //   elevation: 0,
-      //   title: Padding(
-      //     padding: const EdgeInsets.symmetric(vertical: 0.0),
-      //     child: Row(
-      //       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //       children: [
-      //         SvgPicture.asset(
-      //           'assets/Logo.svg',
-      //           height: 22,
-      //           colorFilter: ColorFilter.mode(
-      //             Color(0xfff53f3f).withAlpha(200),
-      //             BlendMode.srcIn,
-      //           ),
-      //         ),
-      //         const Spacer(),
-      //         GestureDetector(
-      //           onTap: () {
-      //             Navigator.of(context).push(
-      //               MaterialPageRoute(
-      //                 builder: (context) => const DiscoverScreen(isBack: true),
-      //               ),
-      //             );
-      //           },
-      //           child: Container(
-      //             // margin: const EdgeInsets.only(top: 8),
-      //             padding: const EdgeInsets.all(8),
-      //             // height: 43,
-      //             // width: 43,
-      //             decoration: BoxDecoration(
-      //               // color: Colors.black.withAlpha(70),
-      //               // color: Colors.white.withAlpha(20),
-      //               gradient: LinearGradient(
-      //                 colors: [
-      //                   Colors.white.withAlpha(50),
-      //                   Colors.white.withAlpha(30),
-      //                   Colors.white.withAlpha(10),
-      //                 ],
-      //                 begin: AlignmentGeometry.topCenter,
-      //                 end: AlignmentGeometry.bottomCenter,
-      //               ),
-      //               borderRadius: BorderRadius.circular(12),
-      //               border: Border(
-      //                 top: BorderSide(
-      //                   color: Colors.white.withAlpha(50),
-      //                   width: 0.6,
-      //                 ),
-      //               ),
-      //             ),
-      //             child: SvgPicture.asset(
-      //               'assets/Search.svg',
-      //               colorFilter: ColorFilter.mode(kTextColor, BlendMode.srcIn),
-      //             ),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
+      
 
       body: SafeArea(
         bottom: false,
@@ -136,19 +76,23 @@ class HomePageBody extends StatelessWidget {
                 } else if (snapshot.hasError) {
                   return NoConnectionBody();
                 } else {
-                  return GridView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-                    physics: const BouncingScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.7,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 18,
+                  return Padding(
+                    padding: const EdgeInsets.only(top:  60.0),
+                    child: GridView.builder(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                      // shrinkWrap: true,
+                      // physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.7,
+                        mainAxisSpacing: 15,
+                        crossAxisSpacing: 18,
+                      ),
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return const MovieShimmer();
+                      },
                     ),
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      return const MovieShimmer();
-                    },
                   );
                 }
               },
@@ -200,34 +144,42 @@ class HomePageBody extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Container(
-                    // margin: const EdgeInsets.only(top: 8),
-                    padding: const EdgeInsets.all(8),
-                    // height: 43,
-                    // width: 43,
-                    decoration: BoxDecoration(
-                      // color: Colors.black.withAlpha(70),
-                      // color: Colors.white.withAlpha(20),
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white.withAlpha(50),
-                          Colors.white.withAlpha(30),
-                          Colors.white.withAlpha(10),
-                        ],
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.white.withAlpha(50),
-                          width: 0.6,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                    
+                      child: Container(
+                        // margin: const EdgeInsets.only(top: 8),
+                        padding: const EdgeInsets.all(8),
+                        // height: 43,
+                        // width: 43,
+                        decoration: BoxDecoration(
+                          // color: Colors.black.withAlpha(70),
+                          // color: Colors.white.withAlpha(20),
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.white.withAlpha(50),
+                              // Colors.white.withAlpha(30),
+                              Colors.white.withAlpha(5),
+                            ],
+                            begin: AlignmentGeometry.topCenter,
+                            end: AlignmentGeometry.bottomCenter,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border(
+                            top: BorderSide(
+                              color: Colors.white.withAlpha(100),
+                              width: 0.6,
+                            ),
+                          ),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/Search.svg',
+                          colorFilter: ColorFilter.mode(kTextColor, BlendMode.srcIn),
+                          height: 25,
                         ),
                       ),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/Search.svg',
-                      colorFilter: ColorFilter.mode(kTextColor, BlendMode.srcIn),
                     ),
                   ),
                 ),

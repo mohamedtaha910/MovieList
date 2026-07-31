@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:movies_app/components/movie_item.dart';
 import 'package:movies_app/constant.dart';
@@ -150,31 +152,38 @@ class CategoryScreen extends StatelessWidget {
                               onTap: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Container(
-                                padding: EdgeInsets.all(0.8),
-                                decoration: BoxDecoration(
-                                  // color: Colors.white.withAlpha(25),
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.white.withAlpha(50),
-                                      // Colors.white.withAlpha(20),
-                                      Colors.white.withAlpha(10),
-                                    ],
-                                    begin: AlignmentGeometry.topCenter,
-                                    end: AlignmentGeometry.bottomCenter,
-                                  ),
-                                  borderRadius: BorderRadius.circular(50),
-                                  border: Border(
-                                    top: BorderSide(
-                                      color: Colors.grey.shade100.withAlpha(50),
-                                      width: 0.4,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: BackdropFilter(
+                                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                
+                                  child: Container(
+                                    padding: EdgeInsets.all(0.8),
+                                    decoration: BoxDecoration(
+                                      // color: Colors.white.withAlpha(25),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.white.withAlpha(50),
+                                          // Colors.white.withAlpha(20),
+                                          Colors.white.withAlpha(5),
+                                        ],
+                                        begin: AlignmentGeometry.topCenter,
+                                        end: AlignmentGeometry.bottomCenter,
+                                      ),
+                                      borderRadius: BorderRadius.circular(50),
+                                      border: Border(
+                                        top: BorderSide(
+                                          color: Colors.grey.shade100.withAlpha(50),
+                                          width: 0.4,
+                                        ),
+                                      ),
+                                    ),
+                                    child: Icon(
+                                      Icons.chevron_left_rounded,
+                                      size: 32,
+                                      color: kTextColor,
                                     ),
                                   ),
-                                ),
-                                child: Icon(
-                                  Icons.chevron_left_rounded,
-                                  size: 32,
-                                  color: kTextColor,
                                 ),
                               ),
                             ),
