@@ -65,7 +65,7 @@ lib/
 
 | favourite                                              | favourite(2)                                              |
 | ------------------------------------------------------ | --------------------------------------------------------- |
-| ![favourite](assets/screenshots/fav.jpg)               | ![favourite ](assets/screenshots/favourite2.jpg)          |
+| ![favourite](assets/screenshots/fav.jpg)               | ![favourite ](assets/screenshots/fav2.jpg)                |
 
 | profile                                                | movie details                                             |
 | ------------------------------------------------------ | --------------------------------------------------------- |
@@ -73,7 +73,7 @@ lib/
 
 | movie details (2)                                      | actor                                                     |
 | ------------------------------------------------------ | --------------------------------------------------------- |
-| ![details](assets/screenshots/detail.jpg)              | ![actor ](assets/screenshots/actor.jpg)                   |
+| ![details](assets/screenshots/detail.jpg)              | ![actor ](assets/screenshots/actor3.jpg)                  |
 
 | actor (2)                                              | favourite(3)                                              |
 | ------------------------------------------------------ | --------------------------------------------------------- |
