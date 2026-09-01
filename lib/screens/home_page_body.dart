@@ -19,8 +19,6 @@ class HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -42,7 +40,7 @@ class HomePageBody extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       child: Column(
                         children: [
-                          SizedBox(height: 67,),
+                          SizedBox(height: 67),
                           GridView.builder(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
@@ -64,7 +62,9 @@ class HomePageBody extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                child: MovieItem(movieImage: movies[index].poster),
+                                child: MovieItem(
+                                  movieImage: movies[index].poster,
+                                ),
                               );
                             },
                           ),
@@ -77,17 +77,21 @@ class HomePageBody extends StatelessWidget {
                   return NoConnectionBody();
                 } else {
                   return Padding(
-                    padding: const EdgeInsets.only(top:  60.0),
+                    padding: const EdgeInsets.only(top: 60.0),
                     child: GridView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                        vertical: 8.0,
+                      ),
                       // shrinkWrap: true,
                       // physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.7,
-                        mainAxisSpacing: 15,
-                        crossAxisSpacing: 18,
-                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.7,
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 18,
+                          ),
                       itemCount: 6,
                       itemBuilder: (context, index) {
                         return const MovieShimmer();
@@ -97,97 +101,102 @@ class HomePageBody extends StatelessWidget {
                 }
               },
             ),
+
+            // app bar
             Positioned(
-                  top: 0,
-                  right: 0,
-                  left: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      // color: Colors.red
-                      gradient: LinearGradient(
-                        colors: [
-                          kPrimaryColor,
-                          
-                          kPrimaryColor.withAlpha(220),
-                          kPrimaryColor.withAlpha(150),
-                          kPrimaryColor.withAlpha(50),
-                          kPrimaryColor.withAlpha(5),
-                        ],
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
-                      ),
-                    ),
-                    padding: EdgeInsets.only(
-                      right: 12,
-                      left: 12,
-                      top: 12,
-                      bottom: 100,
-                    ),
-                    child: Row(
-                    
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(
-                  'assets/Logo.svg',
-                  height: 22,
-                  colorFilter: ColorFilter.mode(
-                    Color(0xfff53f3f).withAlpha(200),
-                    BlendMode.srcIn,
+              top: 0,
+              right: 0,
+              left: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  // color: Colors.red
+                  gradient: LinearGradient(
+                    colors: [
+                      kPrimaryColor,
+
+                      kPrimaryColor.withAlpha(220),
+                      kPrimaryColor.withAlpha(150),
+                      kPrimaryColor.withAlpha(120),
+                      kPrimaryColor.withAlpha(50),
+                      kPrimaryColor.withAlpha(5),
+                    ],
+                    begin: AlignmentGeometry.topCenter,
+                    end: AlignmentGeometry.bottomCenter,
                   ),
                 ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const DiscoverScreen(isBack: true),
+                padding: EdgeInsets.only(
+                  right: 12,
+                  left: 12,
+                  top: 12,
+                  bottom: 100,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/Logo.svg',
+                      height: 22,
+                      colorFilter: ColorFilter.mode(
+                        Color(0xfff53f3f).withAlpha(200),
+                        BlendMode.srcIn,
                       ),
-                    );
-                  },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                    
-                      child: Container(
-                        // margin: const EdgeInsets.only(top: 8),
-                        padding: const EdgeInsets.all(8),
-                        // height: 43,
-                        // width: 43,
-                        decoration: BoxDecoration(
-                          // color: Colors.black.withAlpha(70),
-                          // color: Colors.white.withAlpha(20),
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white.withAlpha(50),
-                              // Colors.white.withAlpha(30),
-                              Colors.white.withAlpha(5),
-                            ],
-                            begin: AlignmentGeometry.topCenter,
-                            end: AlignmentGeometry.bottomCenter,
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const DiscoverScreen(isBack: true),
                           ),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border(
-                            top: BorderSide(
-                              color: Colors.white.withAlpha(100),
-                              width: 0.6,
+                        );
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+
+                          child: Container(
+                            // margin: const EdgeInsets.only(top: 8),
+                            padding: const EdgeInsets.all(9),
+                            // height: 43,
+                            // width: 43,
+                            decoration: BoxDecoration(
+                              // color: Colors.black.withAlpha(70),
+                              // color: Colors.white.withAlpha(20),
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.white.withAlpha(60),
+                                  Colors.white.withAlpha(30),
+                                  Colors.white.withAlpha(15),
+                                ],
+                                begin: AlignmentGeometry.topCenter,
+                                end: AlignmentGeometry.bottomCenter,
+                              ),
+                              borderRadius: BorderRadius.circular(100),
+                              border: Border(
+                                top: BorderSide(
+                                  color: Colors.white.withAlpha(120),
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/Search.svg',
+                              colorFilter: ColorFilter.mode(
+                                Colors.white54,
+                                BlendMode.srcIn,
+                              ),
+                              height: 28,
                             ),
                           ),
                         ),
-                        child: SvgPicture.asset(
-                          'assets/Search.svg',
-                          colorFilter: ColorFilter.mode(kTextColor, BlendMode.srcIn),
-                          height: 25,
-                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ]
-                      
-                    ),
-                  ),
-                ),
+              ),
+            ),
           ],
         ),
       ),

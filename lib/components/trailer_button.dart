@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/constant.dart';
+// import 'package:movies_app/constant.dart';
 // import 'package:movies_app/screens/trailer_screen.dart';
 
 class TrailerButton extends StatelessWidget {
@@ -13,7 +13,7 @@ class TrailerButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         // margin: EdgeInsets.only(top:3 , left: 0),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0.7),
         decoration: BoxDecoration(
           // color: Colors.white70.withAlpha(25),
           // color: kTextColor.withAlpha(50),

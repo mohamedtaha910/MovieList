@@ -1,14 +1,14 @@
-// // =======================================================================================
-// // screen 2
-
 // // the row under the stack
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/components/cast_view.dart';
+import 'package:movies_app/components/date_and_rate.dart';
 import 'package:movies_app/components/details_row.dart';
 import 'package:movies_app/components/expandable_text.dart';
 import 'package:movies_app/components/horizintal_line.dart';
+import 'package:movies_app/components/movie_back_poster.dart';
 import 'package:movies_app/components/movie_item.dart';
 import 'package:movies_app/components/no_connection_body.dart';
 import 'package:movies_app/components/similiar_movies_view.dart';
@@ -59,143 +59,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        movie.backdropPath.isEmpty
-                            ? ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(0),
-                                child: Image.asset('assets/backdrop.png'),
-                              )
-                            : ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(0),
-                                child: Image.network(
-                                  'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
-                                  height: 240,
-                                  // width: double.infinity,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-
-                        Positioned.fill(
-                          // top: 100,
-                          // bottom: 0,
-                          // left: 0,
-                          // right: 0,
-                          // height: 90,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              // borderRadius: BorderRadius.circular(6),
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  kPrimaryColor.withAlpha(120),
-                                  kPrimaryColor,
-                                ],
-                                stops: const [0.0, 0.45, 0.8, 1.0],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          // top: 28,
-                          top: 38,
-                          left: 16,
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(1),
-                              decoration: BoxDecoration(
-                                // color: Colors.black.withAlpha(180),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    // Colors.black.withAlpha(240),
-                                    // Colors.black.withAlpha(190),
-                                    // Colors.black.withAlpha(120),
-                                    kPrimaryColor.withAlpha(255),
-                                    kPrimaryColor.withAlpha(200),
-                                    // kPrimaryColor.withAlpha(150),
-                                  ],
-                                  begin: AlignmentGeometry.topCenter,
-                                  end: AlignmentGeometry.bottomCenter,
-                                ),
-                                borderRadius: BorderRadius.circular(50),
-                                border: Border(
-                                  top: BorderSide(
-                                    color: Colors.white.withAlpha(50),
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                              child: Icon(
-                                Icons.chevron_left_rounded,
-                                size: 32,
-                                color: kTextColor,
-                                // color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          // top: 28,
-                          top: 38,
-                          right: 16,
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                BlocProvider.of<AddFavCubit>(
-                                  context,
-                                ).addFavourite(movie.toMovieModel());
-                                BlocProvider.of<FavCubit>(
-                                  context,
-                                ).fetchAllFav();
-                              });
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(6),
-                              decoration: BoxDecoration(
-                                // color: Colors.black.withAlpha(200),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    // Colors.black.withAlpha(240),
-                                    // Colors.black.withAlpha(190),
-                                    // Colors.black.withAlpha(120),
-                                    kPrimaryColor.withAlpha(255),
-                                    kPrimaryColor.withAlpha(200),
-                                    // kPrimaryColor.withAlpha(120),
-                                  ],
-                                  begin: AlignmentGeometry.topCenter,
-                                  end: AlignmentGeometry.bottomCenter,
-                                ),
-                                borderRadius: BorderRadius.circular(50),
-                                border: Border(
-                                  top: BorderSide(
-                                    color: Colors.white.withAlpha(50),
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                              child: FavouritesService().isFavourite(widget.id)
-                                  ? Icon(
-                                      Icons.bookmark_added_rounded,
-                                      color: kIconsColor,
-                                      size: 24,
-                                    )
-                                  : Icon(
-                                      Icons.bookmark_add_rounded,
-                                      color: kTextColor,
-                                      size: 24,
-                                    ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    MovieBackPoster(movie: movie),
                     // SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -216,59 +80,13 @@ class _MovieDetailsState extends State<MovieDetails> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 16),
-
-                                Container(
-                                  // margin: const EdgeInsets.all(8),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.orangeAccent.withAlpha(50),
-                                        Colors.orangeAccent.withAlpha(20),
-                                      ],
-                                      begin: AlignmentGeometry.topCenter,
-                                      end: AlignmentGeometry.bottomCenter,
-                                    ),
-                                    borderRadius: BorderRadius.circular(50),
-                                    border: Border(
-                                      top: BorderSide(
-                                        color: Colors.orangeAccent.withAlpha(
-                                          50,
-                                        ),
-                                        width: 0.7,
-                                      ),
-                                    ),
-                                    // color: kTextColor.withAlpha(60),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const Icon(
-                                        Icons.star_rounded,
-                                        size: 18,
-                                        color: Colors.orangeAccent,
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Text(
-                                        movie.voteAverage.toString().substring(
-                                          0,
-                                          3,
-                                        ),
-                                        style: const TextStyle(
-                                          fontSize: 13,
-                                          // color: kTextColor,
-                                          color: Colors.orangeAccent,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
                                 SizedBox(height: 18),
+
+                                DateAndRate(
+                                  date: movie.releaseDate,
+                                  rate: movie.voteAverage,
+                                ),
+                                SizedBox(height: 24),
                                 // trailer
                                 TrailerButton(
                                   movieId: movie.id,
@@ -306,16 +124,14 @@ class _MovieDetailsState extends State<MovieDetails> {
                       ),
                     ),
 
-                    // SizedBox(height: 160),
-
-                    // const Spacer(),
-
-                    // Spacer(),
-                    // SizedBox(height: 16),
                     HorizintalLine(),
+                    // SizedBox(height: 4),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: DetailsRow(movie: movie),
+                    ),
 
-                    DetailsRow(movie: movie),
-
+                    // SizedBox(height: 4),
                     HorizintalLine(),
 
                     SizedBox(height: 18),

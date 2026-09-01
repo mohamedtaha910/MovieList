@@ -16,7 +16,7 @@ class DiscoverScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        // toolbarHeight: 70,
         backgroundColor: kPrimaryColor,
         surfaceTintColor: Colors.transparent,
         automaticallyImplyLeading: false,
@@ -35,7 +35,7 @@ class DiscoverScreen extends StatelessWidget {
                     ),
                   )
                 : SizedBox.shrink(),
-            isBack ? const SizedBox(width: 10) : SizedBox.shrink(),
+            isBack ? const SizedBox(width: 12) : SizedBox.shrink(),
             Expanded(
               child: GestureDetector(
                 onTap: () {
@@ -49,7 +49,10 @@ class DiscoverScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white70.withAlpha(25),
                     borderRadius: BorderRadius.circular(100),
-                    // border: Border.all(color: kTextColor, width: 1.5),
+                    border: Border.all(
+                      color: kTextColor.withAlpha(25),
+                      width: 0.8,
+                    ),
                   ),
                   child: Row(
                     children: [

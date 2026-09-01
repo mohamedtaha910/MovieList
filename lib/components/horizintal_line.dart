@@ -11,7 +11,7 @@ class HorizintalLine extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kTextColor.withAlpha(140),
+        color: kTextColor.withAlpha(120),
         borderRadius: BorderRadius.circular(12),
       ),
     );

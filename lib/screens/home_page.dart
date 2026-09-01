@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
@@ -107,99 +107,139 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      child: NavigationBarTheme(
-                        data: NavigationBarThemeData(
-                          indicatorColor: Colors.white.withOpacity(0.15),
-
-                          // indicatorShape: RoundedRectangleBorder(
-                          //   borderRadius: BorderRadiusGeometry.circular(100),
-                          // ),
+                      child: NavigationBar(
+                        indicatorShape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(120)),
                         ),
-                        child: NavigationBar(
-                          labelPadding: const EdgeInsets.all(0),
-                          height: 60,
-                          labelBehavior:
-                              NavigationDestinationLabelBehavior.alwaysHide,
-                          animationDuration: const Duration(milliseconds: 400),
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                          onDestinationSelected: (index) {
-                            setState(() {
-                              currentIndex = index;
-                            });
-                          },
-                          selectedIndex: currentIndex,
-                          destinations: [
-                            NavigationDestination(
-                              icon: SvgPicture.asset(
-                                'assets/Home.svg',
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white.withOpacity(0.7),
-                                  BlendMode.srcIn,
-                                ),
+                        // indicatorColor: Colors.white.withAlpha(25),
+                        indicatorColor: Colors.transparent,
+                        labelPadding: const EdgeInsets.all(0),
+                        height: 60,
+                        labelBehavior:
+                            NavigationDestinationLabelBehavior.alwaysHide,
+                        animationDuration: const Duration(milliseconds: 400),
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        onDestinationSelected: (index) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        },
+                        selectedIndex: currentIndex,
+                        destinations: [
+                          NavigationDestination(
+                            icon: SvgPicture.asset(
+                              'assets/Home.svg',
+                              colorFilter: ColorFilter.mode(
+                                Colors.white.withOpacity(0.7),
+                                BlendMode.srcIn,
                               ),
-                              selectedIcon: SvgPicture.asset(
+                            ),
+                            selectedIcon: Container(
+                              // height: 40,
+                              // width: 40,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 28,
+                                vertical: 14,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withAlpha(25),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: SvgPicture.asset(
                                 'assets/home_selected.svg',
                                 colorFilter: const ColorFilter.mode(
                                   Colors.white,
                                   BlendMode.srcIn,
                                 ),
                               ),
-                              label: 'Home',
                             ),
-                            NavigationDestination(
-                              icon: SvgPicture.asset(
-                                'assets/Search.svg',
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white.withOpacity(0.7),
-                                  BlendMode.srcIn,
-                                ),
+
+                            label: 'Home',
+                          ),
+                          NavigationDestination(
+                            icon: SvgPicture.asset(
+                              'assets/Search.svg',
+                              colorFilter: ColorFilter.mode(
+                                Colors.white.withOpacity(0.7),
+                                BlendMode.srcIn,
                               ),
-                              selectedIcon: SvgPicture.asset(
+                            ),
+                            selectedIcon: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 28,
+                                vertical: 14,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withAlpha(25),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: SvgPicture.asset(
                                 'assets/Search.svg',
                                 colorFilter: const ColorFilter.mode(
                                   Colors.white,
                                   BlendMode.srcIn,
                                 ),
                               ),
-                              label: 'Search',
                             ),
-                            NavigationDestination(
-                              icon: SvgPicture.asset(
-                                'assets/Bookmark.svg',
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white.withOpacity(0.7),
-                                  BlendMode.srcIn,
-                                ),
+
+                            label: 'Search',
+                          ),
+                          NavigationDestination(
+                            icon: SvgPicture.asset(
+                              'assets/Bookmark.svg',
+                              colorFilter: ColorFilter.mode(
+                                Colors.white.withOpacity(0.7),
+                                BlendMode.srcIn,
                               ),
-                              selectedIcon: SvgPicture.asset(
+                            ),
+                            selectedIcon: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 28,
+                                vertical: 14,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withAlpha(25),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: SvgPicture.asset(
                                 'assets/Bookmark.svg',
                                 colorFilter: const ColorFilter.mode(
                                   Colors.white,
                                   BlendMode.srcIn,
                                 ),
                               ),
-                              label: 'Favourites',
                             ),
-                            NavigationDestination(
-                              icon: SvgPicture.asset(
-                                'assets/Profile.svg',
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white.withOpacity(0.7),
-                                  BlendMode.srcIn,
-                                ),
+                            label: 'Favourites',
+                          ),
+                          NavigationDestination(
+                            icon: SvgPicture.asset(
+                              'assets/Profile.svg',
+                              colorFilter: ColorFilter.mode(
+                                Colors.white.withOpacity(0.7),
+                                BlendMode.srcIn,
                               ),
-                              selectedIcon: SvgPicture.asset(
+                            ),
+                            selectedIcon: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 26,
+                                vertical: 14,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withAlpha(25),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: SvgPicture.asset(
                                 'assets/Profile_selected.svg',
                                 colorFilter: const ColorFilter.mode(
                                   Colors.white,
                                   BlendMode.srcIn,
                                 ),
                               ),
-                              label: 'Profile',
                             ),
-                          ],
-                        ),
+                            label: 'Profile',
+                          ),
+                        ],
                       ),
                     ),
                   ),

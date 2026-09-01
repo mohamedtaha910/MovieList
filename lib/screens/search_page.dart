@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:movies_app/components/custom_text_field.dart';
 import 'package:movies_app/components/no_connection_body.dart';
@@ -24,35 +26,51 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        surfaceTintColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        // leadingWidth: 0,
-        title: Row(
-          children: [
-            IconButton(
-              alignment: Alignment.centerLeft,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: 22,
-                color: kTextColor,
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: ClipRRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 50, sigmaY: 30),
+            child: AppBar(
+              bottom: PreferredSize(
+                preferredSize: Size(double.infinity, 0.4),
+                child: Container(
+                  height: 0.4,
+                  color: Colors.grey.shade100.withAlpha(50),
+                ),
+              ),
+              backgroundColor: kPrimaryColor.withAlpha(100),
+              surfaceTintColor: Colors.transparent,
+              automaticallyImplyLeading: false,
+              // leadingWidth: 0,
+              title: Row(
+                children: [
+                  IconButton(
+                    alignment: Alignment.centerLeft,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      size: 22,
+                      color: kTextColor,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  Expanded(
+                    child: CustomTextField(
+                      onChanged: (value) {
+                        setState(() {
+                          movieName = value;
+                        });
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(width: 5),
-            Expanded(
-              child: CustomTextField(
-                onChanged: (value) {
-                  setState(() {
-                    movieName = value;
-                  });
-                },
-              ),
-            ),
-          ],
+          ),
         ),
       ),
 
@@ -95,15 +113,26 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     );
                   } else {
-                    return ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: movies.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: SearchedMovieItem(movie: movies[index]),
-                        );
-                      },
+                    return SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 100),
+                          ListView.builder(
+                            padding: EdgeInsets.all(0),
+                            // physics: const BouncingScrollPhysics(),
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: movies.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: SearchedMovieItem(movie: movies[index]),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     );
                   }
                 } else if (snapshot.hasError) {

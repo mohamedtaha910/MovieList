@@ -32,30 +32,6 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: kPrimaryColor,
-      //   surfaceTintColor: Colors.transparent,
-      //   automaticallyImplyLeading: false,
-      //   elevation: 0,
-      //   title: Row(
-      //     children: [
-      //       IconButton(
-      //         icon: const Icon(Icons.arrow_back_ios_new, color: kTextColor),
-      //         onPressed: () {
-      //           Navigator.of(context).pop();
-      //         },
-      //       ),
-      //       const Text(
-      //         '',
-      //         style: TextStyle(
-      //           fontSize: 20,
-      //           fontWeight: FontWeight.bold,
-      //           color: Colors.white,
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
       body: FutureBuilder<ActorModel>(
         future: actorFuture,
         builder: (context, snapshot) {
@@ -69,7 +45,7 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
             top: false,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              physics: BouncingScrollPhysics(),
+              // physics: BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -137,12 +113,23 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              SizedBox(height: 6),
                               Row(
                                 children: [
-                                  Icon(
-                                    Icons.place_rounded,
-                                    size: 22,
-                                    color: Colors.white38,
+                                  Container(
+                                    padding: EdgeInsets.all(6),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: kTextColor.withAlpha(150),
+                                        width: 0.4,
+                                      ),
+                                    ),
+                                    child: Icon(
+                                      Icons.place_rounded,
+                                      size: 20,
+                                      color: kTextColor,
+                                    ),
                                   ),
                                   SizedBox(width: 10),
                                   SizedBox(
@@ -154,7 +141,7 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
                                           : actor.placeOfBirth.toString(),
                                       style: TextStyle(
                                         fontSize: 14,
-                                        color: Colors.white38,
+                                        color: kTextColor.withAlpha(200),
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
@@ -181,8 +168,8 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
                                     // Colors.black.withAlpha(200),
                                     // Colors.black.withAlpha(120),
                                     Colors.blueGrey.withAlpha(250),
-                                    Colors.blueGrey.withAlpha(180),
-                                    Colors.blueGrey.withAlpha(120),
+                                    Colors.blueGrey.withAlpha(200),
+                                    Colors.blueGrey.withAlpha(150),
 
                                     // kPrimaryColor.withAlpha(255),
                                     // kPrimaryColor.withAlpha(200),
@@ -221,7 +208,7 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
                         Row(
                           children: [
                             Expanded(
-                              child: _StatCard(
+                              child: InfoCard(
                                 icon: Icons.cake_rounded,
                                 label: 'Birthday',
                                 value:
@@ -233,7 +220,7 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
                             ),
                             const SizedBox(width: 12),
                             Expanded(
-                              child: _StatCard(
+                              child: InfoCard(
                                 icon: Icons.hourglass_bottom_rounded,
                                 label: 'Age',
                                 value: actor.birthday == null
@@ -348,379 +335,16 @@ class _ActorProfileScreenState extends State<ActorProfileScreen> {
   }
 }
 
-// ===============================
-// import 'package:flutter/material.dart';
-// import 'package:movies_app/components/expandable_text.dart';
-// import 'package:movies_app/components/movie_item.dart';
-// import 'package:movies_app/constant.dart';
-// import 'package:movies_app/helper/claculate_age.dart';
-// import 'package:movies_app/models/actor_model.dart';
-// import 'package:movies_app/models/movie_model.dart';
-// import 'package:movies_app/screens/movie_details_page.dart';
-// import 'package:movies_app/services/movies_sevices.dart';
-
-// class ActorProfileScreen extends StatefulWidget {
-//   final int actorId;
-
-//   const ActorProfileScreen({super.key, required this.actorId});
-
-//   @override
-//   State<ActorProfileScreen> createState() => _ActorProfileScreenState();
-// }
-
-// class _ActorProfileScreenState extends State<ActorProfileScreen> {
-//   late Future<ActorModel> actorFuture;
-//   late Future<List<MovieModel>> moviesFuture;
-
-//   static const double _expandedHeight = 460;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     actorFuture = MoviesServices().getActorProfile(widget.actorId);
-//     moviesFuture = MoviesServices().getActorMovies(widget.actorId);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: kPrimaryColor,
-//       body: FutureBuilder<ActorModel>(
-//         future: actorFuture,
-//         builder: (context, snapshot) {
-//           if (snapshot.connectionState == ConnectionState.waiting) {
-//             return const Center(
-//               child: CircularProgressIndicator(color: kIconsColor),
-//             );
-//           }
-
-//           if (!snapshot.hasData) {
-//             return Center(
-//               child: Text(
-//                 'Something went wrong',
-//                 style: TextStyle(color: kTextColor),
-//               ),
-//             );
-//           }
-
-//           final actor = snapshot.data!;
-
-//           return CustomScrollView(
-//             physics: const BouncingScrollPhysics(),
-//             slivers: [
-//               SliverAppBar(
-//                 pinned: true,
-//                 stretch: true,
-//                 backgroundColor: kPrimaryColor,
-//                 surfaceTintColor: Colors.transparent,
-//                 expandedHeight: _expandedHeight,
-//                 automaticallyImplyLeading: false,
-//                 leading: Padding(
-//                   padding: const EdgeInsets.only(left: 12, top: 4),
-//                   child: _CircleIconButton(
-//                     icon: Icons.chevron_left_rounded,
-//                     onTap: () => Navigator.of(context).pop(),
-//                   ),
-//                 ),
-//                 flexibleSpace: FlexibleSpaceBar(
-//                   stretchModes: const [
-//                     StretchMode.zoomBackground,
-//                     StretchMode.fadeTitle,
-//                   ],
-
-//                   background: Stack(
-//                     fit: StackFit.expand,
-//                     children: [
-//                       Hero(
-//                         tag: 'actor_${widget.actorId}',
-//                         child: actor.profilePath == ''
-//                             ? Image.asset(
-//                                 'assets/person.jpg',
-//                                 fit: BoxFit.cover,
-//                               )
-//                             : Image.network(
-//                                 'https://image.tmdb.org/t/p/w500${actor.profilePath}',
-//                                 fit: BoxFit.cover,
-//                               ),
-//                       ),
-//                       // Bottom fade so the name sits on a legible surface.
-//                       Positioned.fill(
-//                         child: DecoratedBox(
-//                           decoration: BoxDecoration(
-//                             gradient: LinearGradient(
-//                               begin: Alignment.topCenter,
-//                               end: Alignment.bottomCenter,
-//                               colors: [
-//                                 Colors.transparent,
-//                                 Colors.transparent,
-//                                 kPrimaryColor.withAlpha(140),
-//                                 kPrimaryColor,
-//                               ],
-//                               stops: const [0.0, 0.45, 0.75, 1.0],
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                       Positioned(
-//                         left: 20,
-//                         right: 20,
-//                         bottom: 22,
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             Text(
-//                               actor.name,
-//                               style: const TextStyle(
-//                                 color: Colors.white,
-//                                 fontSize: 30,
-//                                 fontWeight: FontWeight.bold,
-//                                 height: 1.1,
-//                                 shadows: [
-//                                   Shadow(color: Colors.black54, blurRadius: 12),
-//                                 ],
-//                               ),
-//                             ),
-//                             if (actor.placeOfBirth != null &&
-//                                 actor.placeOfBirth != '')
-//                               Padding(
-//                                 padding: const EdgeInsets.only(top: 6),
-//                                 child: Row(
-//                                   mainAxisSize: MainAxisSize.min,
-//                                   children: [
-//                                     const Icon(
-//                                       Icons.place_rounded,
-//                                       size: 15,
-//                                       color: Colors.white70,
-//                                     ),
-//                                     const SizedBox(width: 4),
-//                                     Flexible(
-//                                       child: Text(
-//                                         actor.placeOfBirth.toString(),
-//                                         maxLines: 1,
-//                                         overflow: TextOverflow.ellipsis,
-//                                         style: const TextStyle(
-//                                           color: Colors.white70,
-//                                           fontSize: 13,
-//                                         ),
-//                                       ),
-//                                     ),
-//                                   ],
-//                                 ),
-//                               ),
-//                           ],
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-
-//               SliverToBoxAdapter(
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     const SizedBox(height: 18),
-
-//                     // Stat chips row: Birthday / Age.
-//                     Padding(
-//                       padding: const EdgeInsets.symmetric(horizontal: 16),
-//                       child: Row(
-//                         children: [
-//                           Expanded(
-//                             child: _StatCard(
-//                               icon: Icons.cake_rounded,
-//                               label: 'Birthday',
-//                               value:
-//                                   (actor.birthday == '' ||
-//                                       actor.birthday == null)
-//                                   ? '—'
-//                                   : actor.birthday.toString(),
-//                             ),
-//                           ),
-//                           const SizedBox(width: 12),
-//                           Expanded(
-//                             child: _StatCard(
-//                               icon: Icons.hourglass_bottom_rounded,
-//                               label: 'Age',
-//                               value: actor.birthday == null
-//                                   ? '—'
-//                                   : '${Helper.calculateAge(actor.birthday)} yrs',
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-
-//                     const SizedBox(height: 24),
-
-//                     Padding(
-//                       padding: const EdgeInsets.symmetric(horizontal: 16),
-//                       child: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: [
-//                           const _SectionTitle(title: 'Biography'),
-//                           const SizedBox(height: 10),
-//                           actor.biography.isEmpty
-//                               ? Text(
-//                                   'No biography available.',
-//                                   style: TextStyle(
-//                                     color: kTextColor.withAlpha(180),
-//                                     fontWeight: FontWeight.w400,
-//                                     fontSize: 14,
-//                                     height: 1.5,
-//                                   ),
-//                                 )
-//                               : actor.biography.length < 300
-//                               ? Text(
-//                                   actor.biography,
-//                                   style: TextStyle(
-//                                     color: kTextColor.withAlpha(220),
-//                                     fontWeight: FontWeight.w400,
-//                                     fontSize: 14,
-//                                     height: 1.5,
-//                                   ),
-//                                 )
-//                               : ExpandableText(
-//                                   text: actor.biography,
-//                                   trimLines: 6,
-//                                 ),
-//                         ],
-//                       ),
-//                     ),
-
-//                     const SizedBox(height: 26),
-
-//                     Padding(
-//                       padding: const EdgeInsets.symmetric(horizontal: 16),
-//                       child: const _SectionTitle(title: 'Known For'),
-//                     ),
-//                     const SizedBox(height: 14),
-
-//                     SizedBox(
-//                       height: 210,
-//                       child: FutureBuilder<List<MovieModel>>(
-//                         future: moviesFuture,
-//                         builder: (context, snapshot) {
-//                           if (snapshot.connectionState ==
-//                               ConnectionState.waiting) {
-//                             return const Center(
-//                               child: CircularProgressIndicator(
-//                                 color: kIconsColor,
-//                               ),
-//                             );
-//                           }
-
-//                           final movies = snapshot.data ?? [];
-
-//                           if (movies.isEmpty) {
-//                             return Center(
-//                               child: Text(
-//                                 'No movies found',
-//                                 style: TextStyle(
-//                                   color: kTextColor.withAlpha(150),
-//                                 ),
-//                               ),
-//                             );
-//                           }
-
-//                           return ListView.builder(
-//                             padding: const EdgeInsets.symmetric(horizontal: 16),
-//                             scrollDirection: Axis.horizontal,
-//                             itemCount: movies.length,
-//                             itemBuilder: (context, index) {
-//                               final movie = movies[index];
-
-//                               return Padding(
-//                                 padding: const EdgeInsets.only(right: 12),
-//                                 child: GestureDetector(
-//                                   onTap: () {
-//                                     Navigator.of(context).push(
-//                                       MaterialPageRoute(
-//                                         builder: (context) =>
-//                                             MovieDetails(id: movie.id),
-//                                       ),
-//                                     );
-//                                   },
-//                                   child: ClipRRect(
-//                                     borderRadius: BorderRadius.circular(14),
-//                                     child: Container(
-//                                       decoration: BoxDecoration(
-//                                         borderRadius: BorderRadius.circular(14),
-//                                         boxShadow: [
-//                                           BoxShadow(
-//                                             color: Colors.black.withAlpha(60),
-//                                             blurRadius: 10,
-//                                             offset: const Offset(0, 4),
-//                                           ),
-//                                         ],
-//                                       ),
-//                                       child: MovieItem(
-//                                         movieImage: movie.poster,
-//                                         height: 100,
-//                                         width: 120,
-//                                       ),
-//                                     ),
-//                                   ),
-//                                 ),
-//                               );
-//                             },
-//                           );
-//                         },
-//                       ),
-//                     ),
-
-//                     const SizedBox(height: 32),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
-
-// class _SectionTitle extends StatelessWidget {
-//   final String title;
-
-//   const _SectionTitle({required this.title});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Container(
-//           width: 4,
-//           height: 18,
-//           decoration: BoxDecoration(
-//             color: kIconsColor,
-//             borderRadius: BorderRadius.circular(4),
-//           ),
-//         ),
-//         const SizedBox(width: 8),
-//         Text(
-//           title,
-//           style: const TextStyle(
-//             fontSize: 18,
-//             fontWeight: FontWeight.bold,
-//             color: kTextColor,
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-class _StatCard extends StatelessWidget {
+class InfoCard extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
 
-  const _StatCard({
+  const InfoCard({
     required this.icon,
     required this.label,
     required this.value,
+    super.key,
   });
 
   @override
@@ -728,9 +352,9 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 14),
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha(15),
+        color: Colors.black.withAlpha(20),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withAlpha(20)),
+        border: Border.all(color: Colors.grey.withAlpha(25), width: 0.9),
       ),
       child: Row(
         children: [
@@ -742,7 +366,7 @@ class _StatCard extends StatelessWidget {
               shape: BoxShape.circle,
               border: Border.all(color: Colors.grey.withAlpha(25)),
             ),
-            child: Icon(icon, size: 18, color: kIconsColor),
+            child: Icon(icon, size: 18, color: kTextColor),
           ),
           const SizedBox(width: 10),
           Expanded(
