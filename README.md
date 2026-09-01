@@ -57,23 +57,23 @@ lib/
 
 | Splash                                                 | Home                                                      |
 | ------------------------------------------------------ | --------------------------------------------------------- |
-| ![Splash](assets/screenshots/splash.jpg)               | ![Home](assets/screenshots/home.jpg)                      |
+| ![Splash](assets/screenshots/splash.jpg)               | ![Home](assets/screenshots/home_final.jpg)                |
 
 | discover                                               | search                                                    |
 | ------------------------------------------------------ | --------------------------------------------------------- |
-| ![discover](assets/screenshots/discover.jpg)           | ![search](assets/screenshots/search.jpg)                  |
+| ![discover](assets/screenshots/discover(2).jpg)        | ![search](assets/screenshots/search(2).jpg)               |
 
 | favourite                                              | favourite(2)                                              |
 | ------------------------------------------------------ | --------------------------------------------------------- |
-| ![favourite](assets/screenshots/favourite.jpg)         | ![favourite ](assets/screenshots/favourite2.jpg)          |
+| ![favourite](assets/screenshots/fav.jpg)               | ![favourite ](assets/screenshots/favourite2.jpg)          |
 
 | profile                                                | movie details                                             |
 | ------------------------------------------------------ | --------------------------------------------------------- |
-| ![profile](assets/screenshots/profile.jpg)             | ![details ](assets/screenshots/movie_details.jpg)         |
+| ![profile](assets/screenshots/profile(2).jpg)          | ![details ](assets/screenshots/invite.jpg)                |
 
 | movie details (2)                                      | actor                                                     |
 | ------------------------------------------------------ | --------------------------------------------------------- |
-| ![details](assets/screenshots/movie_details2.jpg)      | ![actor ](assets/screenshots/actor.jpg)                   |
+| ![details](assets/screenshots/detail.jpg)              | ![actor ](assets/screenshots/actor.jpg)                   |
 
 | actor (2)                                              | favourite(3)                                              |
 | ------------------------------------------------------ | --------------------------------------------------------- |
@@ -82,6 +82,11 @@ lib/
 | favourite(4)                                           | category                                                  |
 | ------------------------------------------------------ | --------------------------------------------------------- |
 | ![favourite](assets/screenshots/favourite4.jpg)        | ![category ](assets/screenshots/category.jpg)             |
+
+| Shimmer                                                | Actor dialog                                              |
+| ------------------------------------------------------ | --------------------------------------------------------- |
+| ![shimmer](assets/screenshots/shimmer.jpg)             | ![actor ](assets/screenshots/actor_dialog.jpg)            |
+
 
 
 ---
