@@ -30,108 +30,6 @@ class _FavouritePageState extends State<FavouritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   // backgroundColor: kPrimaryColor,
-      //   surfaceTintColor: Colors.transparent,
-      //   elevation: 0,
-      //   automaticallyImplyLeading: false,
-      //   title: Container(
-      //     decoration: BoxDecoration(color: Colors.red),
-      //     child: Row(
-      //       mainAxisAlignment: MainAxisAlignment.start,
-      //       children: [
-      //         widget.isInProfile == true
-      //             ? GestureDetector(
-      //                 onTap: () {
-      //                   Navigator.of(context).pop();
-      //                 },
-      //                 child: Container(
-      //                   padding: EdgeInsets.all(0.8),
-      //                   decoration: BoxDecoration(
-      //                     // color: Colors.white.withAlpha(25),
-      //                     gradient: LinearGradient(
-      //                       colors: [
-      //                         Colors.white.withAlpha(50),
-      //                         // Colors.white.withAlpha(20),
-      //                         Colors.white.withAlpha(10),
-      //                       ],
-      //                       begin: AlignmentGeometry.topCenter,
-      //                       end: AlignmentGeometry.bottomCenter,
-      //                     ),
-      //                     borderRadius: BorderRadius.circular(50),
-      //                     border: Border(
-      //                       top: BorderSide(
-      //                         color: Colors.grey.shade100.withAlpha(50),
-      //                         width: 0.4,
-      //                       ),
-      //                     ),
-      //                   ),
-      //                   child: Icon(
-      //                     Icons.chevron_left_rounded,
-      //                     size: 32,
-      //                     color: kTextColor,
-      //                   ),
-      //                 ),
-      //               )
-      //             : SizedBox.shrink(),
-      //         widget.isInProfile
-      //             ? const SizedBox(width: 14)
-      //             : SizedBox.shrink(),
-      //         Text(
-      //           'Favourites',
-      //           style: TextStyle(
-      //             fontSize: 20,
-      //             fontWeight: FontWeight.bold,
-      //             color: kTextColor,
-      //           ),
-      //         ),
-      //         Spacer(),
-      //         GestureDetector(
-      //           onTap: () {
-      //             setState(() {
-      //               isSorted = !isSorted;
-      //             });
-      //           },
-      //           child: Container(
-      //             padding: EdgeInsets.all(6),
-      //             decoration: BoxDecoration(
-      //               // color: Colors.white70.withAlpha(25),
-      //               gradient: LinearGradient(
-      //                 colors: [
-      //                   Colors.white.withAlpha(50),
-      //                   // Colors.white.withAlpha(20),
-      //                   Colors.white.withAlpha(10),
-      //                 ],
-      //                 begin: AlignmentGeometry.topCenter,
-      //                 end: AlignmentGeometry.bottomCenter,
-      //               ),
-      //               borderRadius: BorderRadius.circular(50),
-      //               border: Border(
-      //                 top: BorderSide(
-      //                   color: Colors.grey.shade100.withAlpha(50),
-      //                   width: 0.4,
-      //                 ),
-      //                 // right: BorderSide(
-      //                 //   color: Colors.grey.shade100.withAlpha(50),
-      //                 //   width: 0.3,
-      //                 // ),
-      //                 // left: BorderSide(
-      //                 //   color: Colors.grey.shade100.withAlpha(20),
-      //                 //   width: 0.3,
-      //                 // ),
-      //               ),
-      //             ),
-      //             child: Icon(
-      //               Icons.swap_vert_rounded,
-      //               size: 22,
-      //               color: kTextColor,
-      //             ),
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -291,7 +189,7 @@ class _FavouritePageState extends State<FavouritePage> {
                           border: Border(
                             top: BorderSide(
                               color: Colors.grey.shade100.withAlpha(50),
-                              width: 0.4,
+                              width: 0.8,
                             ),
                             // right: BorderSide(
                             //   color: Colors.grey.shade100.withAlpha(50),
@@ -305,6 +203,7 @@ class _FavouritePageState extends State<FavouritePage> {
                         ),
                         child: Icon(
                           Icons.swap_vert_rounded,
+                          fontWeight: FontWeight.bold,
                           size: 22,
                           color: kTextColor,
                         ),
