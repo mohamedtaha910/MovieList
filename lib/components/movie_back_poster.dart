@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:movies_app/constant.dart';
 import 'package:movies_app/cubits/add_favourite_cubit/add_favourite_cubit.dart';
 import 'package:movies_app/cubits/favourite_cubit/favourite_cubit.dart';
@@ -67,7 +68,7 @@ class _MovieBackPosterState extends State<MovieBackPoster> {
               Navigator.of(context).pop();
             },
             child: Container(
-              padding: EdgeInsets.all(1),
+              padding: EdgeInsets.all(1.8),
               decoration: BoxDecoration(
                 // color: Colors.black.withAlpha(180),
                 gradient: LinearGradient(
@@ -110,7 +111,7 @@ class _MovieBackPosterState extends State<MovieBackPoster> {
               });
             },
             child: Container(
-              padding: EdgeInsets.all(6),
+              padding: EdgeInsets.all(7),
               decoration: BoxDecoration(
                 // color: Colors.black.withAlpha(200),
                 gradient: LinearGradient(
@@ -131,16 +132,8 @@ class _MovieBackPosterState extends State<MovieBackPoster> {
                 ),
               ),
               child: FavouritesService().isFavourite(widget.movie.id)
-                  ? Icon(
-                      Icons.bookmark_added_rounded,
-                      color: kIconsColor,
-                      size: 24,
-                    )
-                  : Icon(
-                      Icons.bookmark_add_rounded,
-                      color: kTextColor,
-                      size: 24,
-                    ),
+                  ? Icon(Iconsax.archive_1, color: kIconsColor, size: 24)
+                  : Icon(Iconsax.archive_1_copy, color: kTextColor, size: 24),
             ),
           ),
         ),

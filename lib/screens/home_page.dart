@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:movies_app/constant.dart';
 import 'package:movies_app/screens/discover_screen.dart';
 import 'package:movies_app/screens/favourite_page.dart';
@@ -128,102 +129,108 @@ class _HomePageState extends State<HomePage> {
                         selectedIndex: currentIndex,
                         destinations: [
                           NavigationDestination(
-                            icon: SvgPicture.asset(
-                              'assets/Home.svg',
-                              colorFilter: ColorFilter.mode(
-                                Colors.white.withOpacity(0.7),
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                            icon: Icon(Iconsax.home_2_copy, size: 24),
+                            // icon: SvgPicture.asset(
+                            //   'assets/Home.svg',
+                            //   colorFilter: ColorFilter.mode(
+                            //     Colors.white.withOpacity(0.7),
+                            //     BlendMode.srcIn,
+                            //   ),
+                            // ),
                             selectedIcon: Container(
-                              // height: 40,
-                              // width: 40,
                               padding: EdgeInsets.symmetric(
-                                horizontal: 28,
-                                vertical: 14,
+                                horizontal: 24,
+                                vertical: 12,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withAlpha(25),
                                 borderRadius: BorderRadius.circular(100),
                               ),
-                              child: SvgPicture.asset(
-                                'assets/home_selected.svg',
-                                colorFilter: const ColorFilter.mode(
-                                  Colors.white,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
+                              child: Icon(Iconsax.home_2, size: 25),
+                              //  SvgPicture.asset(
+                              //   'assets/home_selected.svg',
+                              //   colorFilter: const ColorFilter.mode(
+                              //     Colors.white,
+                              //     BlendMode.srcIn,
+                              //   ),
+                              // ),
                             ),
 
                             label: 'Home',
                           ),
                           NavigationDestination(
-                            icon: SvgPicture.asset(
-                              'assets/Search.svg',
-                              colorFilter: ColorFilter.mode(
-                                Colors.white.withOpacity(0.7),
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                            icon: Icon(Iconsax.search_normal_copy, size: 24),
+                            // SvgPicture.asset(
+                            //   'assets/Search.svg',
+                            //   colorFilter: ColorFilter.mode(
+                            //     Colors.white.withOpacity(0.7),
+                            //     BlendMode.srcIn,
+                            //   ),
+                            // ),
                             selectedIcon: Container(
                               padding: EdgeInsets.symmetric(
-                                horizontal: 28,
-                                vertical: 14,
+                                horizontal: 24,
+                                vertical: 12,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withAlpha(25),
                                 borderRadius: BorderRadius.circular(100),
                               ),
-                              child: SvgPicture.asset(
-                                'assets/Search.svg',
-                                colorFilter: const ColorFilter.mode(
-                                  Colors.white,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
+                              child: Icon(Iconsax.search_normal, size: 24),
+                              //  SvgPicture.asset(
+                              //   'assets/Search.svg',
+                              //   colorFilter: const ColorFilter.mode(
+                              //     Colors.white,
+                              //     BlendMode.srcIn,
+                              //   ),
+                              // ),
                             ),
 
                             label: 'Search',
                           ),
                           NavigationDestination(
-                            icon: SvgPicture.asset(
-                              'assets/Bookmark.svg',
-                              colorFilter: ColorFilter.mode(
-                                Colors.white.withOpacity(0.7),
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                            icon: Icon(Iconsax.archive_1_copy, size: 24),
+                            // SvgPicture.asset(
+                            //   'assets/Bookmark.svg',
+                            //   colorFilter: ColorFilter.mode(
+                            //     Colors.white.withOpacity(0.7),
+                            //     BlendMode.srcIn,
+                            //   ),
+                            // ),
                             selectedIcon: Container(
                               padding: EdgeInsets.symmetric(
-                                horizontal: 28,
-                                vertical: 14,
+                                horizontal: 24,
+                                vertical: 12,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withAlpha(25),
                                 borderRadius: BorderRadius.circular(100),
                               ),
-                              child: SvgPicture.asset(
-                                'assets/Bookmark.svg',
-                                colorFilter: const ColorFilter.mode(
-                                  Colors.white,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
+                              child: Icon(Iconsax.archive_1, size: 24),
+                              //  SvgPicture.asset(
+                              //   'assets/Bookmark.svg',
+                              //   colorFilter: const ColorFilter.mode(
+                              //     Colors.white,
+                              //     BlendMode.srcIn,
+                              //   ),
+                              // ),
                             ),
                             label: 'Favourites',
                           ),
                           NavigationDestination(
-                            icon: SvgPicture.asset(
-                              'assets/Profile.svg',
-                              colorFilter: ColorFilter.mode(
-                                Colors.white.withOpacity(0.7),
-                                BlendMode.srcIn,
-                              ),
-                            ),
+                            icon:
+                                // Icon(Iconsax.user, size: 24),
+                                SvgPicture.asset(
+                                  'assets/Profile.svg',
+                                  colorFilter: ColorFilter.mode(
+                                    Colors.white.withOpacity(0.7),
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
                             selectedIcon: Container(
                               padding: EdgeInsets.symmetric(
-                                horizontal: 26,
-                                vertical: 14,
+                                horizontal: 24,
+                                vertical: 12,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withAlpha(25),

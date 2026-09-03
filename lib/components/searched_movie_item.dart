@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:movies_app/components/movie_item.dart';
 import 'package:movies_app/constant.dart';
 import 'package:movies_app/models/movie_model.dart';
@@ -117,7 +118,7 @@ class SearchedMovieItem extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const Icon(
-                              Icons.star,
+                              Icons.star_rounded,
                               size: 16,
                               color: Colors.orangeAccent,
                             ),

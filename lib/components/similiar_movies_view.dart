@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/components/movie_item.dart';
+import 'package:movies_app/components/similiar_movies_shimmer.dart';
 import 'package:movies_app/constant.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/screens/movie_details_page.dart';
@@ -51,14 +52,14 @@ class SimiliarMoviesView extends StatelessWidget {
                               },
                               child: MovieItem(
                                 movieImage: similiarMovies[index].poster,
-                                height: 150,
+                                height: 165,
                                 width: 100,
                               ),
                             ),
                             const SizedBox(height: 6),
                             Text(
-                              similiarMovies[index].title.length >= 13
-                                  ? ' ${similiarMovies[index].title.substring(0, 13)}...'
+                              similiarMovies[index].title.length >= 11
+                                  ? ' ${similiarMovies[index].title.substring(0, 11)}...'
                                   : similiarMovies[index].title, //
                               style: const TextStyle(
                                 fontSize: 12,
@@ -78,7 +79,7 @@ class SimiliarMoviesView extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Center(child: Text('Error loading similar movies'));
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return SimiliarMoviesShimmer();
         }
       },
     );

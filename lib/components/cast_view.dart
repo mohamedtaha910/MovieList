@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/components/cast_shimmer.dart';
 import 'package:movies_app/constant.dart';
 import 'package:movies_app/models/cast_model.dart';
 // import 'package:movies_app/screens/actor_movies_screen.dart';
@@ -50,7 +51,7 @@ class CastView extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Colors.grey.shade100.withAlpha(50),
+                              color: Colors.grey.shade100.withAlpha(40),
                               width: 0.6,
                             ),
                             borderRadius: BorderRadius.circular(12),
@@ -125,8 +126,8 @@ class CastView extends StatelessWidget {
                                   horizontal: 6.0,
                                 ),
                                 child: Text(
-                                  castList[index].character.length >= 14
-                                      ? ' ${castList[index].character.substring(0, 14)}...'
+                                  castList[index].character.length >= 13
+                                      ? ' ${castList[index].character.substring(0, 13)}...'
                                       : castList[index].character == ''
                                       ? ' Unknown '
                                       : ' ${castList[index].character} ',
@@ -151,7 +152,7 @@ class CastView extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text(' The cast is Not Available');
         } else {
-          return const CircularProgressIndicator();
+          return CastShimmer();
         }
       },
     );

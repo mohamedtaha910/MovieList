@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:movies_app/components/movie_item.dart';
 import 'package:movies_app/components/no_connection_body.dart';
 import 'package:movies_app/constant.dart';
@@ -181,14 +182,19 @@ class HomePageBody extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            child: SvgPicture.asset(
-                              'assets/Search.svg',
-                              colorFilter: ColorFilter.mode(
-                                Colors.white54,
-                                BlendMode.srcIn,
-                              ),
-                              height: 28,
+                            child: Icon(
+                              Iconsax.search_normal_copy,
+                              color: Colors.white.withAlpha(200),
+                              size: 24,
                             ),
+                            // child: SvgPicture.asset(
+                            //   'assets/Search.svg',
+                            //   colorFilter: ColorFilter.mode(
+                            //     Colors.white54,
+                            //     BlendMode.srcIn,
+                            //   ),
+                            //   height: 28,
+                            // ),
                           ),
                         ),
                       ),

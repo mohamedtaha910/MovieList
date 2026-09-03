@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:movies_app/components/category_item.dart';
 // import 'package:movies_app/components/custom_text_field.dart';
 import 'package:movies_app/constant.dart';
@@ -50,18 +51,18 @@ class DiscoverScreen extends StatelessWidget {
                     color: Colors.white70.withAlpha(25),
                     borderRadius: BorderRadius.circular(100),
                     border: Border.all(
-                      color: kTextColor.withAlpha(25),
+                      color: kTextColor.withAlpha(20),
                       width: 0.8,
                     ),
                   ),
                   child: Row(
                     children: [
                       Icon(
-                        Icons.search,
+                        Iconsax.search_normal_copy,
                         size: 24,
                         color: kTextColor.withAlpha(120),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 12),
                       Text(
                         'Search Movies',
                         style: TextStyle(

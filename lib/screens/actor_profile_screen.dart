@@ -352,7 +352,7 @@ class InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 14),
       decoration: BoxDecoration(
-        color: Colors.black.withAlpha(20),
+        color: Colors.black.withAlpha(35),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.grey.withAlpha(25), width: 0.9),
       ),
